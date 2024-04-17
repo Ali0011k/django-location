@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  app:
+    image: app
+    container_name: app
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+    command: bash run.sh
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
